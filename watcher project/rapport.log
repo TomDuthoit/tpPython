@@ -1,0 +1,16 @@
+[DEBUG] Interval set to :
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+[DEBUG] bonjour
+%(asctime)s :: %(levelname)s :: %(message)s
+%(asctime)s :: %(levelname)s :: %(message)s
+%(asctime)s :: %(levelname)s :: %(message)s
+%(asctime)s :: %(levelname)s :: %(message)s
+2018-09-22 12:46:42,474 :: DEBUG :: Interval set to :
+2018-09-22 12:46:43,476 :: DEBUG :: bonjour
+2018-09-22 12:46:44,477 :: DEBUG :: bonjour

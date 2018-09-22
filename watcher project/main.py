@@ -7,12 +7,12 @@
 import argparse         #Argument parsing library.
 import logging
 import threading
+from logging.handlers import RotatingFileHandler
 
 #---------------------------
 #Variables
 #---------------------------
 
-output = "raport.log"   #Default log file location. Where the program is executed.
 
 #---------------------------
 #functions
@@ -45,6 +45,7 @@ def my_main():
     formatter = logging.Formatter('[%(levelname)s] %(message)s')
 
     stream_handler = logging.StreamHandler()
+    file_handler = None
 
 
     args = parser.parse_args()
@@ -60,12 +61,20 @@ def my_main():
 
     if args.output is not None:
         logger.debug("Output specified:"+ args.output)
+        file_handler = RotatingFileHandler(args.output, 'a', 1000000, 1)
     else:
         logger.debug("default Output : rapport.log.")
+        file_handler = RotatingFileHandler("rapport.log", 'a', 1000000, 1)
+
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s'))
+    logger.addHandler(file_handler)
+
 
     if args.i is not None:
         logger.debug("Interval set to :")
-        setInterval(logger,callback,args.i)
+        setInterval(logger,callback,args.i)          # Set a interval of <args.i> seconds and call the "callback" function
+                                                     # just put "compare" if you want to call the compare function
         return
     else:
         logger.debug("Interval diabled")
